@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "looking_forward_to_items",
+  "info": {
+    "singularName": "looking-forward-to-item",
+    "pluralName": "looking-forward-to-items",
+    "displayName": "Looking forward to item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour.tour",
+      "inversedBy": "looking_forward_to_items"
+    }
+  }
+}

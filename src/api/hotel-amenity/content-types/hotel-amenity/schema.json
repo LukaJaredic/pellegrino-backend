@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "hotel_amenities",
+  "info": {
+    "singularName": "hotel-amenity",
+    "pluralName": "hotel-amenities",
+    "displayName": "Hotel amenity",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "hotels": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::hotel.hotel",
+      "inversedBy": "hotel_amenities"
+    }
+  }
+}

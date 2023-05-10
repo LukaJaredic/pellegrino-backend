@@ -1,0 +1,147 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tours",
+  "info": {
+    "singularName": "tour",
+    "pluralName": "tours",
+    "displayName": "Tour",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "location": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "summary": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "images": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ],
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
+    "isFeatured": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false
+    },
+    "isTopPick": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "boolean",
+      "default": false
+    },
+    "labels": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::label.label",
+      "mappedBy": "tours"
+    },
+    "looking_forward_to_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::looking-forward-to-item.looking-forward-to-item",
+      "mappedBy": "tours"
+    },
+    "tour_includes_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour-includes-item.tour-includes-item",
+      "mappedBy": "tours"
+    },
+    "day_programmes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::day-programme.day-programme",
+      "mappedBy": "tour"
+    },
+    "price": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "decimal",
+      "min": 0,
+      "required": true
+    },
+    "tour_doesnt_include_items": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour-doesnt-include-item.tour-doesnt-include-item",
+      "mappedBy": "tours"
+    },
+    "hotel": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::hotel.hotel",
+      "inversedBy": "tours"
+    },
+    "duration": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "integer",
+      "min": 1
+    },
+    "category": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      },
+      "type": "enumeration",
+      "enum": [
+        "city-walking-tours",
+        "private-tours",
+        "montenegro-tours",
+        "other-destinations"
+      ]
+    }
+  }
+}

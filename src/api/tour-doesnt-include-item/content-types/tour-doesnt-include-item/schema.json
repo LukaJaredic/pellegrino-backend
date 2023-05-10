@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tour_doesnt_include_items",
+  "info": {
+    "singularName": "tour-doesnt-include-item",
+    "pluralName": "tour-doesnt-include-items",
+    "displayName": "Tour doesn't include item",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "text": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    },
+    "tours": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tour.tour",
+      "inversedBy": "tour_doesnt_include_items"
+    }
+  }
+}

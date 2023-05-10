@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "email_from_platforms",
+  "info": {
+    "singularName": "email-from-platform",
+    "pluralName": "email-from-platforms",
+    "displayName": "Email from platform",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "message": {
+      "type": "text"
+    },
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    }
+  }
+}

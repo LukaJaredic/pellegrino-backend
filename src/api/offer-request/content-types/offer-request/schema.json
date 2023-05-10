@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "offer_requests",
+  "info": {
+    "singularName": "offer-request",
+    "pluralName": "offer-requests",
+    "displayName": "Offer request",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string"
+    },
+    "date": {
+      "type": "date",
+      "required": true
+    },
+    "additionalInfo": {
+      "type": "text"
+    },
+    "persons": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "offerSent": {
+      "type": "boolean",
+      "default": false,
+      "required": false
+    },
+    "tour": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::tour.tour"
+    }
+  }
+}
