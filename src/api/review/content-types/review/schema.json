@@ -4,7 +4,8 @@
   "info": {
     "singularName": "review",
     "pluralName": "reviews",
-    "displayName": "Review"
+    "displayName": "Review",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -23,8 +24,7 @@
       },
       "type": "text",
       "required": true,
-      "minLength": 10,
-      "maxLength": 500
+      "minLength": 10
     },
     "reviewerName": {
       "pluginOptions": {
@@ -38,11 +38,12 @@
       "minLength": 3
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": false,
       "pluginOptions": {
         "i18n": {
           "localized": false
