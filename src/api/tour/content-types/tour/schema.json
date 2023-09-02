@@ -126,8 +126,7 @@
           "localized": false
         }
       },
-      "type": "integer",
-      "min": 1
+      "type": "integer"
     },
     "category": {
       "pluginOptions": {
@@ -140,7 +139,8 @@
         "city-walking-tours",
         "private-tours",
         "montenegro-tours",
-        "other-destinations"
+        "other-destinations",
+        "plane-tickets"
       ]
     },
     "special_element": {
