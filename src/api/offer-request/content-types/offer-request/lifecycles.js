@@ -1,18 +1,42 @@
 module.exports = {
-  async afterCreate (event) {
-    const result = event.result;
+  async afterCreate(event) {
+    const { params } = event;
+    const {
+      firstName,
+      lastName,
+      email,
+      phoneNumber,
+      persons,
+      date,
+      additionalInfo,
+      createdAt,
+      tour,
+    } = params.data;
+
+    const id = tour?.connect?.[0]?.id;
+
     try {
-      await strapi.plugins['email'].services.email.send({
-        to: 'pellegrinots@gmail.com',
-        subject: 'A new offer request has been received',
+      await strapi.plugins["email"].services.email.send({
+        to: "luka.jaredic@yahoo.com",
+        subject: "A new offer request has been received",
         html: `
-        <h1>A new offer request has been received.</h1>
-        <p>You can see it in the admin panel</p>
-        <a href="${process.env["BACKEND_URL"]}/admin/content-manager/collectionType/api::offer-request.offer-request/${result.id}">Click here to get to admin panel</a>
-`
+        <h1>A new offer request has been received at ${createdAt}</h1>
+        <p>
+          Tour: 
+          <a href="https://pellegrinotravel.com/tours/${id}">
+            https://pellegrinotravel.com/tours/${id}
+          </a>
+        </p>
+        <p>For date: ${date}</p>
+        <p>Persons: ${persons}</p>
+        <p>Additional info: ${additionalInfo}</p>
+        <p>Customers name: ${firstName} ${lastName}</p>
+        <p>Customers email: ${email}</p>
+        <p>Phone number: ${phoneNumber}</p>
+        `,
       });
-    }catch (e) {
-      console.log(e.response.body)
+    } catch (e) {
+      console.log(e.response.body);
     }
-  }
-}
+  },
+};
