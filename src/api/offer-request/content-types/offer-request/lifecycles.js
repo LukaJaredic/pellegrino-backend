@@ -13,9 +13,7 @@ module.exports = {
       tour,
     } = params.data;
 
-    console.log(JSON.stringify(tour));
-
-    const id = tour?.connect?.[0]?.id;
+    const id = tour?.connect?.[0]?.id || tour;
 
     try {
       await strapi.plugins["email"].services.email.send({
