@@ -17,7 +17,7 @@ module.exports = {
 
     try {
       await strapi.plugins["email"].services.email.send({
-        to: "pellegrinots@gmail.com",
+        to: "projaredic@gmail.com",
         subject: "A new offer request has been received",
         html: `
         <h1>A new offer request has been received at ${createdAt}</h1>
