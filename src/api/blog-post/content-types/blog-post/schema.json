@@ -55,13 +55,14 @@
       },
       "type": "text"
     },
-    "poststyle": {
+    "isFeatured": {
       "pluginOptions": {
         "i18n": {
-          "localized": true
+          "localized": false
         }
       },
-      "type": "richtext"
+      "type": "boolean",
+      "default": true
     }
   }
 }
