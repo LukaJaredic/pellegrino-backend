@@ -1,20 +1,33 @@
+const { Resend } = require("resend");
+
+const resend = new Resend(process.env.RESEND_API_KEY);
+
 module.exports = {
-  async afterCreate (event) {
-    const result = event.result;
+  async afterCreate(event) {
+    const { name, email, phone, message, createdAt } = event.result;
+
     try {
-      await strapi.plugins['email'].services.email.send({
-        to: 'pellegrinots@gmail.com',
-        subject: 'New message from website user',
-        replyTo: result.email,
-        text: `New message received from website.
-        User's name: ${result.name}
-        User's email: ${result.email}
-        User's phone: ${result.phone || "Not entered"}
-        User's message: ${result.message}`,
+      const { data, error } = await resend.emails.send({
+        from: process.env.RESEND_FROM_EMAIL,
+        to: process.env.RESEND_TO_EMAIL,
+        subject: "New message from website user",
+        replyTo: email,
+        html: `
+          <h1>New message received from website at ${createdAt}</h1>
+          <p>User's name: ${name}</p>
+          <p>User's email: ${email}</p>
+          <p>User's phone: ${phone || "Not entered"}</p>
+          <p>User's message: ${message}</p>
+        `,
       });
-      console.log("Email sent successfully")
-    }catch (e) {
-      console.log(e.response.body)
+
+      if (error) {
+        strapi.log.error("Resend error", error);
+      } else {
+        strapi.log.info(`Resend email sent: ${data?.id}`);
+      }
+    } catch (e) {
+      strapi.log.error("Failed to send Resend email", e);
     }
-  }
-}
+  },
+};
